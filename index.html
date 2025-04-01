@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECT Shop Star - קטלוג מכשירים סלולריים</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .logo-box {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+        }
+        .logo-bg {
+            position: absolute;
+            inset: 0;
+            background-color: #9333ea;
+            border-radius: 0.5rem;
+            transform: rotate(45deg);
+        }
+        .logo-inner {
+            position: absolute;
+            inset: 4px;
+            background-color: white;
+            border-radius: 0.5rem;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-text {
+            width: 24px;
+            height: 24px;
+            background-color: #9333ea;
+            border-radius: 0.25rem;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            height: 12rem;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .filter-container {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .filter-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .filter-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+        .filter-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        .filter-select, .filter-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            outline: none;
+        }
+        .filter-select:focus, .filter-input:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: #9333ea;
+        }
+        .filter-button {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .filter-button:hover {
+            background-color: #d1d5db;
+        }
+        .brand-badge {
+            background-color: #e0e7ff;
+            color: #4338ca;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.625rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+        }
+        .price {
+            color: #9333ea;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .add-button {
+            background-color: #9333ea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .add-button:hover {
+            background-color: #7e22ce;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-box">
+                    <div class="logo-bg"></div>
+                    <div class="logo-inner">
+                        <div class="logo-text">ECT</div>
+                    </div>
+                </div>
+                <div class="flex flex-col mr-2">
+                    <div class="text-xl font-bold text-purple-600">ECT Shop Star</div>
+                    <div class="text-xs text-gray-500">חנות מכשירים סלולריים</div>
+                </div>
+            </div>
+            <nav>
+                <ul class="flex space-x-6 space-x-reverse">
+                    <li><a href="../index.html" class="text-gray-800 hover:text-purple-600 font-medium">דף הבית</a></li>
+                    <li><a href="index.html" class="text-gray-800 hover:text-purple-600 font-medium">קטלוג</a></li>
+                    <li><a href="../index.html#contact" class="text-gray-800 hover:text-purple-600 font-medium">צור קשר</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">קטלוג מכשירים סלולריים</h1>
+        
+        <!-- Filters -->
+        <div class="filter-container">
+            <h3 class="filter-title">סינון מוצרים</h3>
+            <div class="filter-group">
+                <div>
+                    <label class="filter-label">מותג</label>
+                    <select class="filter-select">
+                        <option value="all">כל המותגים</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="filter-label">נפח אחסון</label>
+                    <select class="filter-select">
+                        <option value="all">כל האפשרויות</option>
+                        <option value="128">128GB</option>
+                        <option value="256">256GB</option>
+                        <option value="512">512GB</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="filter-label">טווח מחירים</label>
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                        <input type="number" class="filter-input" placeholder="מינימום" value="0">
+                        <span>-</span>
+                        <input type="number" class="filter-input" placeholder="מקסימום" value="6000">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="filter-button">אפס סינון</button>
+            </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- iPhone 13 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/iphone15.webp" alt="iPhone 13" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">iPhone 13</h3>
+                        <span class="brand-badge">Apple</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 128GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.1 אינץ׳ Super Retina XDR</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה כפולה 12MP</p>
+                            <p class="text-gray-600">מעבד: A15 Bionic</p>
+                            <p class="text-gray-600">סוללה: עד 19 שעות נגינת וידאו</p>
+                            <p class="text-gray-600">מערכת הפעלה: iOS 15</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪1,800</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone 15 128GB -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/iphone15.webp" alt="iPhone 15" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">iPhone 15</h3>
+                        <span class="brand-badge">Apple</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 128GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.1 אינץ׳ Super Retina XDR</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה כפולה 48MP</p>
+                            <p class="text-gray-600">מעבד: A16 Bionic</p>
+                            <p class="text-gray-600">סוללה: עד 20 שעות נגינת וידאו</p>
+                            <p class="text-gray-600">מערכת הפעלה: iOS 17</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪2,450</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone 15 256GB -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/iphone15.webp" alt="iPhone 15" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">iPhone 15</h3>
+                        <span class="brand-badge">Apple</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 256GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.1 אינץ׳ Super Retina XDR</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה כפולה 48MP</p>
+                            <p class="text-gray-600">מעבד: A16 Bionic</p>
+                            <p class="text-gray-600">סוללה: עד 20 שעות נגינת וידאו</p>
+                            <p class="text-gray-600">מערכת הפעלה: iOS 17</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪2,699</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone 15 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/iphone15.webp" alt="iPhone 15 Pro" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">iPhone 15 Pro</h3>
+                        <span class="brand-badge">Apple</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 256GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.1 אינץ׳ Super Retina XDR ProMotion</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה משולשת 48MP</p>
+                            <p class="text-gray-600">מעבד: A17 Pro</p>
+                            <p class="text-gray-600">סוללה: עד 23 שעות נגינת וידאו</p>
+                            <p class="text-gray-600">מערכת הפעלה: iOS 17</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪3,699</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galaxy S24 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/galaxy_s24_ultra.jpeg" alt="Galaxy S24" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">Galaxy S24</h3>
+                        <span class="brand-badge">Samsung</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 256GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.2 אינץ׳ Dynamic AMOLED 2X</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה משולשת 50MP</p>
+                            <p class="text-gray-600">מעבד: Snapdragon 8 Gen 3</p>
+                            <p class="text-gray-600">סוללה: 4,000mAh</p>
+                            <p class="text-gray-600">מערכת הפעלה: Android 14</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪2,399</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galaxy S24 Ultra -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/galaxy_s24_ultra.jpeg" alt="Galaxy S24 Ultra" class="h-full object-contain" />
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">Galaxy S24 Ultra</h3>
+                        <span class="brand-badge">Samsung</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">נפח אחסון: 256GB</p>
+                    <div class="mb-4 text-sm">
+                        <div class="grid grid-cols-1 gap-1">
+                            <p class="text-gray-600">מסך: 6.8 אינץ׳ Dynamic AMOLED 2X</p>
+                            <p class="text-gray-600">מצלמה: מערכת מצלמה מרובעת 200MP</p>
+                            <p class="text-gray-600">מעבד: Snapdragon 8 Gen 3</p>
+                            <p class="text-gray-600">סוללה: 5,000mAh</p>
+                            <p class="text-gray-600">מערכת הפעלה: Android 14</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="price">₪3,599</span>
+                        <button class="add-button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center mb-4">
+                <p class="mb-2">צור קשר:</p>
+                <p class="mb-1">טלפון: 0544455213</p>
+                <p>אימייל: ectshopstar@gmail.com</p>
+            </div>
+            <p>© 2025 ECT Shop Star. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>
