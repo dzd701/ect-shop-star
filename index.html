@@ -1,328 +1,121 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECT Shop Star - חנות מכשירים סלולריים</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        .logo-box {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            margin-right: 8px;
-        }
-        .logo-bg {
-            position: absolute;
-            inset: 0;
-            background-color: #9333ea;
-            border-radius: 0.5rem;
-            transform: rotate(45deg);
-        }
-        .logo-inner {
-            position: absolute;
-            inset: 4px;
-            background-color: white;
-            border-radius: 0.5rem;
-            transform: rotate(45deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-text {
-            width: 24px;
-            height: 24px;
-            background-color: #9333ea;
-            border-radius: 0.25rem;
-            transform: rotate(-45deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-        .hero-phone {
-            width: 192px;
-            height: 320px;
-            background-color: #1f2937;
-            border-radius: 1.5rem;
-            border: 4px solid #374151;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-screen {
-            width: 176px;
-            height: 288px;
-            background-color: #9333ea;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            color: white;
-            font-size: 1.25rem;
-            font-weight: bold;
-            text-align: center;
-            padding: 1rem;
-        }
-        .product-card {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            transition: box-shadow 0.3s;
-        }
-        .product-card:hover {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .product-image {
-            height: 12rem;
-            background-color: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .feature-icon {
-            width: 4rem;
-            height: 4rem;
-            background-color: #e9d5ff;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem auto;
-        }
-        .feature-icon svg {
-            width: 2rem;
-            height: 2rem;
-            color: #9333ea;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>א.א.ד טכנולוגיות וסלולר</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      direction: rtl;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: #666;
+    }
+    .category {
+      padding: 2rem 1rem;
+    }
+    .category h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding-top: 1rem;
+    }
+    .product {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+    .product p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .price {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .whatsapp-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #eee;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="logo-box">
-                    <div class="logo-bg"></div>
-                    <div class="logo-inner">
-                        <div class="logo-text">ECT</div>
-                    </div>
-                </div>
-                <div class="flex flex-col mr-2">
-                    <div class="text-xl font-bold text-purple-600">ECT Shop Star</div>
-                    <div class="text-xs text-gray-500">חנות מכשירים סלולריים</div>
-                </div>
-            </div>
-            <nav>
-                <ul class="flex space-x-6 space-x-reverse">
-                    <li><a href="index.html" class="text-gray-800 hover:text-purple-600 font-medium">דף הבית</a></li>
-                    <li><a href="catalog/index.html" class="text-gray-800 hover:text-purple-600 font-medium">קטלוג</a></li>
-                    <li><a href="#contact" class="text-gray-800 hover:text-purple-600 font-medium">צור קשר</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body>
+  <header>
+    <h1>א.א.ד טכנולוגיות וסלולר</h1>
+    <p class="tagline">המחירים הכי זולים בשוק עם אחריות יבואן רשמי!</p>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">המכשירים הסלולריים המתקדמים ביותר</h1>
-                    <p class="text-xl mb-6">מגוון רחב של מכשירים סלולריים מהמותגים המובילים במחירים אטרקטיביים</p>
-                    <div class="flex space-x-4 space-x-reverse">
-                        <a href="catalog/index.html" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">לקטלוג המכשירים</a>
-                        <a href="#contact" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition">צור קשר</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-64 h-64">
-                        <div class="absolute inset-0 bg-white/20 rounded-full blur-xl"></div>
-                        <div class="relative flex items-center justify-center h-full">
-                            <img src="images/iphone15.webp" alt="iPhone 15" class="max-w-full max-h-full object-contain" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">מכשירים מובילים</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/iphone15.webp" alt="iPhone 16 Pro" class="h-full object-contain" />
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2">iPhone 16 Pro</h3>
-                        <p class="text-gray-600 mb-4">מסך 6.3 אינץ', מעבד A18 Pro, מצלמה 48MP</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold text-xl">₪4,250</span>
-                            <a href="catalog/index.html" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">פרטים נוספים</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product Card 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/galaxy_s24_ultra.jpeg" alt="Galaxy S24" class="h-full object-contain" />
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2">Galaxy S24 Ultra</h3>
-                        <p class="text-gray-600 mb-4">מסך 6.8 אינץ', סוללה חזקה, מצלמה מרובעת 200MP</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold text-xl">₪3,599</span>
-                            <a href="catalog/index.html" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">פרטים נוספים</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product Card 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/iphone15.webp" alt="iPhone 15" class="h-full object-contain" />
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2">iPhone 15</h3>
-                        <p class="text-gray-600 mb-4">מסך 6.1 אינץ', מעבד A16, מחיר משתלם</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold text-xl">₪2,450</span>
-                            <a href="catalog/index.html" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">פרטים נוספים</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-10">
-                <a href="catalog/index.html" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition">לצפייה בכל המכשירים</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <div class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">למה לבחור בנו?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-purple-50 p-6 rounded-lg text-center">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">מחירים אטרקטיביים</h3>
-                    <p class="text-gray-600">אנו מציעים את המחירים הטובים ביותר בשוק עם אחריות התאמת מחיר</p>
-                </div>
-                
-                <div class="bg-purple-50 p-6 rounded-lg text-center">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">אחריות מורחבת</h3>
-                    <p class="text-gray-600">כל המכשירים מגיעים עם אחריות יצרן מלאה ואפשרות להרחבת אחריות</p>
-                </div>
-                
-                <div class="bg-purple-50 p-6 rounded-lg text-center">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">תמיכה מקצועית</h3>
-                    <p class="text-gray-600">צוות התמיכה שלנו זמין 7 ימים בשבוע לכל שאלה או בעיה</p>
-                </div>
-            </div>
-        </div>
+  <section class="category">
+    <h2>Apple</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-15-Pro_New-Design_09122023_big.jpg.large.jpg" alt="iPhone 15 Pro">
+        <h3>iPhone 15 Pro</h3>
+        <p>העוצמה של A17 Pro, עם עיצוב טיטניום יוקרתי.</p>
+        <div class="price">₪3,499</div>
+        <a class="whatsapp-button" href="https://wa.me/972544455213" target="_blank">הזמן בוואטסאפ</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Contact Form -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">צור קשר</h2>
-            <div class="max-w-2xl mx-auto bg-gray-50 rounded-lg shadow-md p-8">
-                <div class="mb-6 text-center">
-                    <p class="text-lg mb-2">ECT Shop Star</p>
-                    <p class="mb-1">טלפון: 0544455213</p>
-                    <p class="mb-4">אימייל: ectshopstar@gmail.com</p>
-                </div>
-                <form>
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-700 font-medium mb-2">שם מלא</label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            placeholder="הכנס את שמך המלא"
-                        />
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="phone" class="block text-gray-700 font-medium mb-2">מספר טלפון</label>
-                        <input 
-                            type="tel" 
-                            id="phone" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            placeholder="הכנס את מספר הטלפון שלך"
-                        />
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="email" class="block text-gray-700 font-medium mb-2">דוא"ל</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            placeholder="הכנס את כתובת הדוא״ל שלך"
-                        />
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="message" class="block text-gray-700 font-medium mb-2">הודעה</label>
-                        <textarea 
-                            id="message" 
-                            rows="4" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            placeholder="כתוב את הודעתך כאן"
-                        ></textarea>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button 
-                            type="button" 
-                            class="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition"
-                        >
-                            שלח הודעה
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+  <section class="category">
+    <h2>Samsung</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://images.samsung.com/is/image/samsung/p6pim/il/2401/gallery/il-galaxy-s24-ultra-s928-sm-s928bzadeux-539154493" alt="Galaxy S24 Ultra">
+        <h3>Galaxy S24 Ultra</h3>
+        <p>מצלמה חדשנית וביצועים עוצמתיים לעולם המודרני.</p>
+        <div class="price">₪3,199</div>
+        <a class="whatsapp-button" href="https://wa.me/972544455213" target="_blank">הזמן בוואטסאפ</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col items-center justify-center mb-4">
-                <p class="mb-1">טלפון: 0544455213</p>
-                <p>אימייל: ectshopstar@gmail.com</p>
-            </div>
-            <p>© 2025 ECT Shop Star. כל הזכויות שמורות.</p>
-        </div>
-    </footer>
+  <footer>
+    <p>ליצירת קשר: 054-445-5213 | מייל: ectshopstar@gmail.com</p>
+    <p>נשמח לעמוד לשירותכם בכל עת</p>
+  </footer>
 </body>
 </html>
